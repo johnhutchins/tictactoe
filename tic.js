@@ -28,12 +28,12 @@ $(document).ready(function() {
     $('.box').click(function() {
         if(whichPlayer === playerX){
             this.append('X')
-            $(this).addClass('disabled')
-            checkGridFull()  
+            $(this).addClass('disabled')  
             whichPlayer.cellsChosen.push(this.id)
             //TODO if array is bigger than three, need to verify all the combinations...
             if(whichPlayer.cellsChosen.length >= 3){
                 cleanInput(whichPlayer.cellsChosen)
+                checkGridFull()
             }
             text.empty()
             text.append('It is now player Os turn')
@@ -42,10 +42,10 @@ $(document).ready(function() {
         if(whichPlayer === playerO){
             this.append('O')
             $(this).addClass('disabled')
-            checkGridFull()
             whichPlayer.cellsChosen.push(this.id)
             if(whichPlayer.cellsChosen.length >= 3){
                 cleanInput(whichPlayer.cellsChosen)
+                checkGridFull()
             }
             text.empty()
             text.append('It is now player Xs turn')
