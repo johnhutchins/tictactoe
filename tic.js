@@ -23,7 +23,7 @@ let arr = []
 
 $(document).ready(function() {
     let whichPlayer = playerX
-    let text = $("#playerTurn")
+    let text = document.getElementById('playerTurn')
 
     $('.box').click(function() {
         if(whichPlayer === playerX){
@@ -68,7 +68,6 @@ function isArrWinner(cleanedArr){
         let isWinner = true
         let arr = winningPossibilities[j]
         for(let i=0;i<arr.length;i++){
-            //console.log('check against arr === ',arr)
             if(!cleanedArr.includes(arr[i])){
                 isWinner = false
                 break
@@ -99,6 +98,6 @@ function checkGridFull(){
     if(arr.length === 9){
         $('.game-board').replaceWith('<img src="https://media.makeameme.org/created/yeah-you-guys-8lqkrt.jpg"></img>')
         console.log("GAME IS FULL")
+        return true
     }
-    return true
 }
