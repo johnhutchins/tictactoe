@@ -30,7 +30,6 @@ $(document).ready(function() {
             this.append('X')
             $(this).addClass('disabled')  
             whichPlayer.cellsChosen.push(this.id)
-            //TODO if array is bigger than three, need to verify all the combinations...
             if(whichPlayer.cellsChosen.length >= 3){
                 cleanInput(whichPlayer.cellsChosen)
                 checkGridFull()
