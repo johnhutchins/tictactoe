@@ -20,12 +20,10 @@ let winningPossibilities = [
 ]
 
 let arr = []
+let whichPlayer = playerX
+let text = document.getElementById('playerTurn')
 
-$(document).ready(function() {
-    let whichPlayer = playerX
-    let text = document.getElementById('playerTurn')
-
-    $('.box').click(function() {
+/*     $('.box').click(function() {
         if(whichPlayer === playerX){
             this.append('X')
             $(this).addClass('disabled')  
@@ -50,11 +48,34 @@ $(document).ready(function() {
             text.append('It is now player Xs turn')
             return whichPlayer = playerX
         }
-    });
-    $('#playAgain').on('click',()=>{
+    }); */
+
+    let boxes = document.getElementsByClassName('box')
+    for(let i=0;i<boxes.length;i++){
+        boxes[i].addEventListener('click',(e)=>{
+            if(whichPlayer === playerX){
+                boxes[i].textContent = 'X'
+                e.target.className += ' disabled'
+                playerX.cellsChosen.push(boxes[i].id)
+                whichPlayer = playerO
+            } else if(whichPlayer === playerO){
+                boxes[i].textContent = 'O'
+                e.target.className += ' disabled'
+                playerO.cellsChosen.push(boxes[i].id)
+                whichPlayer = playerX
+            } else {
+                console.log("Catch error in a console log?")
+            }
+        })
+    }
+
+
+
+    let playAgain = document.getElementById('playAgain')
+    playAgain.addEventListener('click',(e)=>{
         location.reload()
     })
-});
+
 
 
 function cleanInput(cellsChosenArray){
